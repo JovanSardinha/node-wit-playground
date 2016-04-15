@@ -33,8 +33,14 @@ const actions = {
   merge: (context, entities, cb) => {
     // Retrieve the location entity and store it into a context field
     const loc = firstEntityValue(entities, 'location');
+    console.log("loc: " + loc);
+    const temp = firstEntityValue(entities, 'datetime');
+    console.log("temp: " + temp);
     if (loc) {
       context.loc = loc;
+    }
+    if (temp){
+      context.temp = temp;
     }
     cb(context);
   },
@@ -44,7 +50,11 @@ const actions = {
   'fetch-weather': (context, cb) => {
     // Here should go the api call, e.g.:
     // context.forecast = apiCall(context.loc)
-    context.forecast = 'sunny';
+    context.forecast = 'cloudy';
+    cb(context);
+  },
+  'fetch-date':(context, cb)=>{
+    context.temp2 = '1/1/2017';
     cb(context);
   },
 };
